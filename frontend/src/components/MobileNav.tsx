@@ -8,9 +8,11 @@ import {
   } from "./ui/sheet"
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
+import { useAuth0 } from "@auth0/auth0-react";
   
 
 const MobileNav = () => {
+  const {isAuthenticated } = useAuth0();
   return (
     <Sheet>
         <SheetTrigger>
