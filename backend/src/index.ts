@@ -3,6 +3,8 @@ import 'dotenv/config.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
 
+import MyUserRouter from "./routes/MyUser.route";
+
 const app = express();
 
 mongoose.connect(process.env.MONGO_URI as string)
@@ -12,7 +14,10 @@ mongoose.connect(process.env.MONGO_URI as string)
     console.log("unable to connect to Mongodb" + err.message);
 })
 
+app.use(express.json());
 app.use(cors());
+
+app.use('/api/my/user', MyUserRouter)
 
 app.listen('7000', ()=> {
     console.log('server listening on port 7000')
